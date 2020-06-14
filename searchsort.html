@@ -1,0 +1,237 @@
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Search and Sort</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><strong><a href="index.html">Kenneth</a></strong> Ruan</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="https://drive.google.com/file/d/1YSbOGwCCzVOzNZYCdFF6KUUOYEsp9yWC/view?usp=sharing">Resume</a></li>
+						<li><a href="projects.html">Projects</a></li>
+						<li><a href="tutorials.html">Tutorials</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="special">
+						<h2>Search and Sort</h2>
+					</header>
+					
+					<p>The problems of searching and sorting are classical ones. There are many algorithms that attempt to optimize this process as the organization and retrieval of information are fundamental to computing efficiency.</p>
+					
+					<p>Most of the time these two processes go hand in hand. A fast search requires a sorted dataset.</p>
+					
+					<h3>Time Complexity</h3>
+
+					<p>A term you’ll find commonly associated with computational algorithms is time complexity. Time complexity is used to describe the number of operations performed with an algorithm so that a general understanding of the runtime can be accessed. </p>
+
+					<p>You’ll often see time complexity shown with Big O Notation, which looks like this <i>O(...)</i>, where the content inside the brackets is usually the variable n raised to a power.  The variable n is typically used to represent the number of elements.</p>
+					
+					<p>For example, <i>O(n^2)</i> complexity represents that the amount of operations performed is proportional to the number of elements squared.</p>
+					
+					<h3>Linear Search</h3>
+					
+					<p>Let’s start by looking at Linear Search.</p>
+					
+					<p>Linear search involves looping through every element until the right one is found.</p>
+					
+<pre><code>public static int linearSearch(int[] arr, int val){
+    for (int i = 0; i &lt arr.length; i++){
+        if (arr[i] == val){
+           return i;
+        }
+    }
+    return -1;
+}
+</code></pre>
+
+					<p>The algorithm above returns the index of the value if it is found in the array, otherwise, -1 is returned. Linear search has <i>O(n)</i> runtime as we iterate through every element.</p>
+					
+					<h3>Binary Search</h3>
+					
+					<p>Binary Search is a more optimized searching method, however, the dataset has to be sorted. Examine the implementation below and see if you can figure out why.</p> 
+					
+<pre><code>public static int binarySearch(int[] arr, int val){
+    int low = 0;
+    int high = arr.length-1;
+    while (low &lt high){
+        int mid = (low+high)/2;
+        if (arr[mid] == val){
+            return mid;
+        }
+        else if (arr[mid] &lt val){
+           low = mid + 1;
+        }
+        else if (arr[mid] &gt val){
+           high = mid;
+        }
+    }
+    return -1;
+}
+</code></pre>
+					
+					<p>The assumption behind binary search is that if the value at the current index is smaller than the value we want, all the values before that can also be ignored as the data is sorted and therefore the previous values are even smaller. This same assumption can be made if the value at the current index is larger than the value we want. Of course, this assumption only holds true if the dataset is sorted.</p> 
+				 	
+					<p>Using this method, we can shrink the range we look for a value in half everytime we make a comparison. This brings our time complexity to O(log n), which is significantly faster.</p>
+					
+					<p>If we compare a dataset of 2^31 elements. A linear search will take 2147483648 comparisons, while the binary search will only take 31 comparisons.</p>
+					
+					<p>Now let’s go over some sorting algorithms.</p>
+
+					<h3>Insertion Sort</h3>
+					
+					<p>The premise behind insertion sort is to iterate through each element in an array and insert it into the correct position relative to the sorted elements. The algorithm runs in <i>O(n^2)</i> so it isn’t ideal for sorting large datasets, but it is relatively simple to code.</p>
+
+<pre><code>public static void insertionSort(int[] arr){
+    for (int i = 1; i &lt arr.length; i++){
+        int val = arr[i];
+        int j = i - 1;
+      
+        //Shifts elements to the right
+        while (j &gt= 0 &amp&amp arr[j] &gt val){
+            arr[j+1] - arr[j];
+            j--;
+        }
+        arr[j+1] = val;
+    }
+}
+</code></pre>
+					
+					<h3>Selection Sort</h3>
+
+					<p>Selection sort iterates through every element to find the largest value. It then moves that value to the end and repeats the same process on the remaining values. Selection sort also runs in <i>O(n^2)</i> time, but it is simple to write.</p>
+
+<pre><code>public static void selectionSort(int[] arr){
+   for (int i = arr.length-1; i &gt= 0; i--){
+       int ind = 0;
+       for (int j = 0; j &lt= i; j++){
+           if (arr[j] &gt arr[ind]){
+               ind = j;
+           }
+       }
+       int temp = arr[i];
+       arr[i] = arr[ind];
+       arr[ind] = temp;
+   }
+}
+</code></pre>
+					<h3>Merge Sort</h3>
+					
+					<p> Merge sort is a slightly more complicated sorting algorithm. The algorithm can be split into 3 steps.</p>
+					<ol>
+						<li>Divide the array into two halves</li>
+						<li>Call mergeSort on both halves, which will further subdivide the array</li>
+						<li>Merge the halves back together in sorted order</li>
+					</ol>
+					
+					<p>The sorting component involves looping through both halves of the array and then merging them into one sorted array. Elements in both arrays will be compared and the smallest element will be added first.</p>
+
+					<div class="8u$ 12u$">
+						<div class="image fit">
+							<center><img src="images/merge_sort_example.png" alt="" /></center>
+							<center><p>Image taken from Programiz.</p></center>
+						</div>
+					</div>
+					
+					<p>Examine the image above to help understanding. Merge sort allows sorting to be done in <i>O(n log n)</i> time. To sort each level of the flowchart in the diagram above requires <i>n</i> comparisons. Each component is already sorted therefore merging the two halves requires less comparisons than an <i>O(n^2)</i> sorting algorithm. In total, there will be <i>log n</i> levels because the array is divided in half each time. This ultimately leads to an <i>O(n log n)</i> complexity.</p>
+					
+					<p>A version of merge sort has been implemented below.
+</p>
+					
+<pre><code>public static void mergeSort(int arr[], int l, int r){
+   if (l &lt r){
+       int m = (l+r)/2;
+       mergeSort(arr, l, m);
+       mergeSort(arr, m+1, r);
+       merge(arr, l, m, r);
+   }
+}
+ 
+public static void merge(int[] arr, int l, int m, int r){
+   int n1 = m - l + 1;
+   int n2 = r - m;
+ 
+   //Create temp arrays
+   int[] L = new int[n1];
+   int[] R = new int[n2];
+ 
+   //Copy over the data
+   for (int i = 0; i &lt n1; ++i)
+           L[i] = arr[l + i];
+   for (int j = 0; j &lt n2; ++j)
+       R[j] = arr[m + 1 + j];
+ 
+   int i = 0, j = 0;
+    int k = l; //Index in the resulting array
+ 
+   while (i &lt n1 &amp&amp j &lt n2) {
+       if (L[i] &lt= R[j]) {
+           arr[k] = L[i];
+           i++;
+       }
+       else {
+           arr[k] = R[j];
+           j++;
+       }
+       k++;
+   }
+    //Copy over the remaining elements
+   while (i &lt n1) {
+       arr[k] = L[i];
+       i++;
+       k++;
+   }
+ 
+   while (j &lt n2) {
+       arr[k] = R[j];
+       j++;
+       k++;
+   }
+}
+</code></pre>
+					
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-facebook"></a></li>
+						<li><a href="#" class="icon fa-twitter"></a></li>
+						<li><a href="#" class="icon fa-instagram"></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Kenneth Ruan</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+						<li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

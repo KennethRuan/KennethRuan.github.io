@@ -1,0 +1,165 @@
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Arrays / ArrayLists</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><strong><a href="index.html">Kenneth</a></strong> Ruan</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="https://drive.google.com/file/d/1YSbOGwCCzVOzNZYCdFF6KUUOYEsp9yWC/view?usp=sharing">Resume</a></li>
+						<li><a href="projects.html">Projects</a></li>
+						<li><a href="tutorials.html">Tutorials</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="special">
+						<h2>Arrays / ArrayLists</h2>
+					</header>
+					
+					<h3>Arrays</h3>
+					
+					<p>Arrays are a collection of values stored in a single variable. They allow information to be stored together rather than in individual variables.</p>
+					
+					<p>To declare an array, place square brackets [] after the data type.</p>
+					
+<pre><code>int[] numbers;</code></pre>
+					
+					<h3>Initialization</h3>
+
+					<p>An array can be initialized in two ways. Using an array literal, we can initialize the array by placing the comma-separated values between curly brackets. </p>
+						
+<pre><code>int[] numbers = {1,2,3,4,5};</code></pre>
+
+					<p>Or we can initialize the array with a size and fill it later.</p>
+
+<pre><code>int[] numbers = new int[5];</code></pre>
+					
+					<h3>Accessing Elements</h3>
+					
+					<p>You can access different elements of the array by referring to its index number in square brackets.</p>
+					
+<pre><code>System.out.println(numbers[0]); //prints 1</code></pre>
+					
+					<p>It’s important to note that the first index is 0.</p>
+
+					<p>To change a value in an array, access the element and then use the assignment operator. </p>
+
+<pre><code>numbers[2] = 1; //The array is now 1,2,1,4,5</code></pre>
+					
+					<h3>Array Length</h3>
+					
+					<p>To get the number of elements in an array, access the array’s length property. </p> 
+					
+<pre><code>System.out.println(numbers.length); //outputs 5</code></pre>
+					
+					<p>Using the length property we can also loop through every element in an array.</p> 
+				 	
+<pre><code>for (int i = 0; i &lt numbers.length; i++){
+    System.out.println(numbers[i]);
+}</code></pre>
+					
+					<h3>For-Each Loop</h3>
+					
+					<p>A for-each loop or enhanced for loop is another way of looping through all the elements in an array. The enhanced for loop is only used to access the elements and you cannot directly modify the array elements. The format looks as follows:</p>
+
+<pre><code>for (type var: array){
+    ...
+}</code></pre>
+
+					<p>The element for each iteration of the loop will be stored in the var. Here’s how it would look if we used it on our array from before.</p>
+
+<pre><code>for (int num: numbers){
+    System.out.println(num);
+}</code></pre>
+					<h3>Multidimensional Arrays</h3>
+					
+					<p> Arrays of arrays can also be made. We call these <strong>multidimensional arrays</strong>.</p>
+					<p>To create a 2-Dimensional array, we add an extra set of square brackets and when we initialize it as a literal, we add an extra set of curly braces.</p>
+					
+<pre><code>int[][] numbers = { {1, 2, 3, 4}, {5, 6, 7, 8} };</code></pre>
+
+					<p>Alternatively:</p>
+
+<pre><code>int[][] numbers = new int[2][4];</code></pre>
+
+					<p>To access the elements, we’ll use two indexes, one to specify the array and the second to access the element in the array.</p>
+					
+<pre><code>System.out.println(numbers[0][2]); //outputs 3</code></pre>
+
+					<p>We can also use a nested for-loop to access every element in the 2-D array.</p>
+					
+<pre><code>for (int i = 0; i &lt numbers.length; i++){
+    for (int j = 0; j &lt numbers[i].length; j++){
+        System.out.println(numbers[i][j]);
+    }
+}</code></pre>
+					
+					<h3>ArrayList</h3>
+					
+					<p>ArrayLists have a similar function to arrays, but they have dynamic sizing, meaning they don’t have a preset size and will expand as more elements are added.</p>
+					<p>The ArrayList is found in the java.util package and can be imported by</p>
+					
+<pre><code>import java.util.ArrayList;</code></pre>
+
+					<p>All elements in ArrayLists are objects, meaning that an int ArrayList cannot be declared. For primitive data types, the equivalent <strong>wrapper class</strong> will have to be used. For ints, the wrapper class is Integer.</p>
+					
+<pre><code>ArrayList&ltInteger&gt numbers = new ArrayList<Integer>();</code></pre>
+
+					<h3>Other Methods</h3>
+					
+					<p>Listed below are the methods associated with ArrayLists that replace and add onto the functionality of the array.</p>
+					<ul>
+						<li>.add(object) - used to add an object to the end of the ArrayList</li>
+						<li>.add(index, object) - used to add an object to a certain index of the ArrayList</li>
+						<li>.remove(index) - removes the object at the specified index, all the following elements are shifted</li>
+						<li>.get(index) - returns the object at the specified index</li>
+						<li>.set(index, object) - sets the element at the specified index to the object</li>
+						<li>.clear() - removes all elements in the ArrayList</li>
+						<li>.size() - returns the number of elements in the ArrayList</li>
+					</ul>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-facebook"></a></li>
+						<li><a href="#" class="icon fa-twitter"></a></li>
+						<li><a href="#" class="icon fa-instagram"></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Kenneth Ruan</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+						<li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

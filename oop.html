@@ -1,0 +1,155 @@
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Object-Oriented Programming</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><strong><a href="index.html">Kenneth</a></strong> Ruan</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="https://drive.google.com/file/d/1YSbOGwCCzVOzNZYCdFF6KUUOYEsp9yWC/view?usp=sharing">Resume</a></li>
+						<li><a href="projects.html">Projects</a></li>
+						<li><a href="tutorials.html">Tutorials</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="special">
+						<h2>Object-Oriented Programming</h2>
+					</header>
+					
+					<h3>What is OOP?</h3>
+					
+					<p>OOP is an acronym for <strong>Object-Oriented Programming.</strong> You can categorize programs as object-oriented programming or its counterpart, procedural programming.</p>
+					
+					<p>Procedural programming places a focus on writing methods/procedures that perform operations on data, while object-oriented programming places an emphasis on organizing data into groups with methods that manipulate data in a similar way.</p>
+
+					<p>Now that may be a lot of information to take in, so let’s look at an example that will help clear things up. A good way to think about OOP is to relate it back to our everyday lives.</p>
+						
+
+					<p>Look around you. Depending on where you are, you may see objects like desks, chairs and lights. Now each one of those objects has a unique function from the others, but if you compare a desk and another desk, for example, you’ll see they share many similarities.</p>
+
+					<p>OOP attempts to simulate a similar concept. When there are similarities in function with small differences in data (consider how different desks are of different sizes or colour), OOP allows us to group this information and create code that is intuitive and easy to read.</p>
+				 	
+					<h3>Advantages of OOP</h3>
+					
+					<ul>
+						<li>Good for scalability and expansion of projects</li>
+						<li>Clear and organized code</li>
+						<li>Easier for readers to use and understand</li>
+					</ul>
+					
+					<h3>Classes and Objects</h3>
+					
+					<p>A fundamental aspect of OOP is the usage of classes and objects. Classes are the templates from which objects are made.</p>
+
+					<p>Let’s go back to the desk example from before. What are the key aspects of a desk? Let’s say that a desk must be able to hold things and for our sake, a desk must have four legs. </p>
+
+					<p>So from this simple description I can make desks of a variety of shapes and colours. I could have a large oak desk or a small plastic desk. Because the class contains all of the basic functionality of a desk, I have the power to create any desk I want by changing some of the features like size and material.</p> 
+
+					<p>That is the power of OOP. From a simple template I can change the data in a way so that a huge variety of objects can be made.</p>
+					
+					<h3>Inheritance</h3>
+					
+					<p>Inheritance is a way in which objects can receive the properties and behaviors of their parents.
+</p>
+					
+<pre><code>
+class Animal{
+   public void call(){
+       System.out.println("Animal Noise");
+   }
+}
+ 
+class Cat extends Animal{
+   public void call(){
+       System.out.println("Meow");
+   }
+}
+ 
+class Dog extends Animal{
+   public void call(){
+       System.out.println("Bark");
+   }
+}
+ 
+class Elephant extends Animal{
+}
+ 
+class Main{
+   public static void main(String[] args){
+       Animal a = new Animal();
+       Cat c = new Cat();
+       Dog d = new Dog();
+       Elephant e = new Elephant();
+ 
+       System.out.print("Animal: ");
+       a.call();
+       System.out.print("Cat: ");
+       c.call();
+       System.out.print("Dog: ");
+       d.call();
+       System.out.print("Elephant: ");
+       e.call();
+   }
+}
+ 
+Output:
+ 
+Animal: Animal Noise
+Cat: Meow
+Dog: Bark
+Elephant: Animal Noise</code></pre>
+
+					<p>Examine the code above. You may notice that we made an Animal class that had a method call() inside of it. When the Cat class inherited from the Animal class, it gained the call() method. However, we know what noise cats make when they call so we can overwrite the parent’s method and change the call() method to print “meow” instead. If you look at the Elephant class, however, we haven’t defined the method call() so it inherits its parent’s method. That’s why e.call() prints “Animal Noise”.</p>
+					
+					<h3>Extra Reading</h3>
+					
+					<p>To learn more about OOP read:
+					<a href = https://drive.google.com/file/d/1y1h72yGRZz0vCH5fK0fE5BZ56xcpw1jn/view?usp=sharing> Don't Fear The OOP!</a>
+					<p>A short story based on Johannes Claerbout’s Don’t Fear The OOP.</p>
+
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-facebook"></a></li>
+						<li><a href="#" class="icon fa-twitter"></a></li>
+						<li><a href="#" class="icon fa-instagram"></a></li>
+					</ul>
+					<ul class="copyright">
+						<li>&copy; Kenneth Ruan</li>
+						<li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+						<li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

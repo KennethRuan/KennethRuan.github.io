@@ -1,0 +1,365 @@
+<!DOCTYPE HTML>
+<!--
+	Spatial by TEMPLATED
+	templated.co @templatedco
+	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Creating a Game</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<h1><strong><a href="index.html">Kenneth</a></strong> Ruan</h1>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li><a href="https://drive.google.com/file/d/1YSbOGwCCzVOzNZYCdFF6KUUOYEsp9yWC/view?usp=sharing">Resume</a></li>
+						<li><a href="projects.html">Projects</a></li>
+						<li><a href="tutorials.html">Tutorials</a></li>
+					</ul>
+				</nav>
+			</header>
+
+			<a href="#menu" class="navPanelToggle"><span class="fa fa-bars"></span></a>
+
+		<!-- Main -->
+			<section id="main" class="wrapper">
+				<div class="container">
+
+					<header class="special">
+						<h2>Creating a Game</h2>
+					</header>
+					
+					<p>Creating a game can be as simple or as complicated as you want. There are endless resources and engines that can be utilized to create one, as well as, plenty of ideas that only you can decide on.</p>
+					
+					<p>However, we’ll go over some of the basic mechanics of a game and provide some flexible code that will allow you to create a variety of games.</p>
+					
+					<h3>JFrame Window</h3>
+
+					<p>The code belows shows how to create a JFrame Window.</p>
+					
+<pre><code>import java.awt.Canvas;
+import java.awt.Dimension;
+import javax.swing.JFrame;
+
+public class Window extends Canvas{
+    
+    public JFrame frame;
+
+    //Constructor
+    public Window(int w, int h, String title, Game game) {
+        frame = new JFrame(title); //Creates the JFrame window
+        
+        //Sets dimensions
+        game.setPreferredSize(new Dimension(w,h));
+        
+        frame.setSize(new Dimension(w,h));
+        frame.setMaximumSize(new Dimension(w,h));
+        frame.setMinimumSize(new Dimension(w,h));
+        
+        //Settings
+        frame.setResizable(false);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        
+        //Adds the game object
+        frame.add(game);
+        
+        //Adjust screen size to fit the game
+        frame.pack();
+        
+        frame.setVisible(true);
+        
+        //Starts the thread after the Window has been created
+        game.start();
+    }
+}
+</code></pre>
+
+					<p>You may notice that the code requires a Game object to be passed. In the next section we’ll touch on what components are necessary to create a successful Game class.</p>
+					
+					<h3>Game Class</h3>
+					
+					<p>The code for the game class is shown below. There is a lot to take in, so scroll down further where it will be broken into smaller components and explained.</p> 
+					
+<pre><code>import java.awt.*;
+import java.io.*;
+
+public class Game extends Canvas implements Runnable{
+    
+    static final int WIDTH = 800, HEIGHT = 500;
+    
+    private Thread thread;
+    private boolean running = false;
+   
+    //Constructor, initializes all the objects and assets
+    public Game() {
+        window = new Window(WIDTH, HEIGHT, "Game", this);
+    }
+
+    public synchronized void start() {
+        thread = new Thread(this);
+        thread.start();
+        running = true;
+    }
+    
+    public synchronized void stop() {
+        try {
+            thread.join();
+            running = false;
+        }
+        catch(Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    //Game engine, all of the processing is called from inside this method
+    public void run() {
+        this.requestFocus();
+        long lastTime = System.nanoTime();
+        double amountOfTicks = 60.0; //ticks per second
+        double ns = 1000000000 / amountOfTicks;
+        double delta = 0;
+        long timer = System.currentTimeMillis();
+        int frames = 0;
+        while(running) {
+            long now = System.nanoTime();
+            delta += (now - lastTime) / ns;
+            lastTime = now;
+            while (delta >=1){ //Calls tick() based on elapsed time, this accounts for lag
+                tick();
+                delta--;
+            }
+            if (running)
+                render();
+            frames++;
+                    
+            if(System.currentTimeMillis() - timer > 1000)
+            {
+                timer += 1000;
+                System.out.println("FPS: "+ frames);
+                frames = 0;
+            }
+        }
+        stop();
+    }
+    
+    //Performs processing for each tick
+    private void tick() {}
+    
+    //Renders images
+    private void render() {
+        BufferStrategy bs = this.getBufferStrategy();
+        if (bs == null) {
+            this.createBufferStrategy(3);
+            return;
+        }
+        Graphics g = bs.getDrawGraphics();
+        
+        //Graphics will be drawn here
+        
+        g.dispose();
+        bs.show();
+    }
+
+    public static void main(String[] args) {
+        new Game();
+    }
+}
+</code></pre>
+					
+					<p>The first two methods are: </p> 
+
+<pre><code>public synchronized void start() {
+	thread = new Thread(this);
+	thread.start();
+	running = true;
+}
+
+public synchronized void stop() {
+	try {
+		thread.join();
+		running = false;
+	}
+	catch(Exception e) {
+		e.printStackTrace();
+	}
+}
+</code></pre>
+				 	
+					<p>These methods allow the game to be run. The exact workings behind them aren’t very important, but to learn more about them look into Threads and Runnable. The general gist is that threads are processes that execute code and the Runnable interface allows these threads to be created. The code above adapts the Runnable interface into our Game class so that it can be run.</p>
+
+					<h3>Game Engine</h3>
+					
+					<p>The game engine is the heart of the game. It defines how general components, the processing and the graphics, are handled. The code below follows a very popular game engine format. In fact, a similar engine with the same principles was used to create Minecraft.</p>
+
+<pre><code>//Game engine, all of the processing is called from inside this method
+public void run() {
+	this.requestFocus();
+	long lastTime = System.nanoTime();
+	double amountOfTicks = 60.0; //ticks per second
+	double ns = 1000000000 / amountOfTicks;
+	double delta = 0;
+	long timer = System.currentTimeMillis();
+	int frames = 0;
+	while(running) {
+		long now = System.nanoTime();
+		delta += (now - lastTime) / ns;
+		lastTime = now;
+		while (delta >=1){ //Calls tick() based on elapsed time, this accounts for lag
+			tick();
+			delta--;
+		}
+		if (running)
+			render();
+		frames++;
+
+		if(System.currentTimeMillis() - timer > 1000)
+		{
+			timer += 1000;
+			System.out.println("FPS: "+ frames);
+			frames = 0;
+		}
+	}
+	stop();
+}
+</code></pre>
+					<p>The components to focus on are the tick() and render() methods, which control our processing and graphics. The rest of the code controls the timing and handles issues such as lag, however, our focus will be primarily on the two methods mentioned above.</p>
+					
+					<p>You may have noticed that the tick() method doesn’t have any code in it. Inside the method, your game objects and their corresponding tick methods should be called. For example:</p>
+					
+<pre><code>player.tick();
+</code></pre>
+					
+					<p>This will allow any processing to be done for the player object, such as calculating their location. The idea behind this game engine is that each object has a tick() method where the processing is done for that object.</p>
+					
+					<p>The render method works in a similar way. All the game objects and their corresponding render() methods will be called inside. </p>
+					
+<pre><code>private void render() {
+	BufferStrategy bs = this.getBufferStrategy();
+	if (bs == null) {
+		this.createBufferStrategy(3);
+		return;
+	}
+	Graphics g = bs.getDrawGraphics();
+
+	//Graphics will be drawn here
+
+	g.dispose();
+	bs.show();
+}
+</code></pre>
+					<p>The rest of the code creates a surface for Java graphics to be used. An example of a render method call would be:</p>
+					
+<pre><code>player.render(g);
+</code></pre>
+
+					<p>It is essential that the Graphics variable g is passed in the method, otherwise the object won’t know what surface to draw to.</p>
+					
+					<p>Now let’s go over some basics that are used in most games.</p>
+					
+					<h3>Mouse Input</h3>
+					
+					<p>Components in Java support the addition of ActionListeners which listen for interactions from the user. In order to create an ActionListener for mouse input follow the code below.</p>
+
+<pre><code>public class MouseInput extends MouseAdapter{
+    
+    private Game game;
+    
+    int mx = 0, my = 0;
+    
+    public MouseInput() {}
+    
+    public void mousePressed(MouseEvent e) {
+        mx = e.getX();
+        my = e.getY();
+    }
+    
+    public void mouseReleased(MouseEvent e) {}
+}
+</code></pre>
+					<p>By extending MouseAdapter we allow the methods mousePressed() and mouseReleased() to be supported. These methods are called every time the user presses their mouse or releases it, respectively. To get the coordinates of the user’s cursor, e.getX() and e.getY() are used. Using these two variables you can code your game to interact with the user.</p>
+					
+					<p>Finally to add the ActionListener to your game component, return to your Game class’ constructor and add the following line of code.</p>
+					
+<pre><code>this.addMouseListener(new MouseInput());
+</code></pre>
+					<h3>Key Input</h3>
+					
+					<p>The concept behind key input is similar to mouse input. Both use Listeners to listen for user input. An implementation of KeyAdapter is shown below.</p>
+					
+<pre><code>public class KeyInput extends KeyAdapter{
+    
+    //Constructor
+    public KeyInput() {
+    }
+
+    //Listens for key input
+    public void keyPressed(KeyEvent e) {
+        int key = e.getKeyCode();
+    }
+    
+    //Listens for key release
+    public void keyReleased(KeyEvent e) {
+        int key = e.getKeyCode();
+    }
+}
+</code></pre>
+					<p>The key variable stores an integer value that corresponds to a key the user has pressed. To get the value for each key you can use the KeyEvent constants. For example, to check if the space key is pressed the following code would be used.</p>
+					
+<pre><code>
+if (key == KeyEvent.VK_SPACE)
+</code></pre>
+
+					<p>Like with the mouse input, we’ll have to add our key input to our game component.</p>
+					
+<pre><code>
+this.addKeyListener(new KeyInput());
+</code></pre>
+					<h3>Collision</h3>
+					
+					<p>A lot of games use collision for objects. The simplest way to check for collision with minimal operations is shown below.</p>
+							
+<pre><code>
+public boolean intersect(Object object1, Object object2) {
+    return object1.x + object1.w > object2.x &amp&amp object1.x &lt object2.x + object2.w
+            &amp&amp object1.y + object1.h > object2.y &amp&amp object1.y &lt object2.y + object2.h;
+}
+</code></pre>
+					<p>This method will return whether or not two objects with rectangular hitboxes will collide. The first line checks for overlap in the x-axis and the second line checks for overlap in the y-axis.</p>
+					
+					<p>To check out the implementation of the code above in a project. Check out <a href = "https://github.com/skyflaren/atTheCounter"> this game.</a></p>
+					
+					<p>Another great resource for creating Java Swing games is <a href = "https://www.youtube.com/watch?v=1gir2R7G9ws&t=569s"> this tutorial.</a> This youtube channel provides an in-depth look into the features shown above.</p>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+			  <div class="container">
+				<ul class="icons">
+						<li><a href="#" class="icon fa-facebook"></a></li>
+						<li><a href="#" class="icon fa-twitter"></a></li>
+						<li><a href="#" class="icon fa-instagram"></a></li>
+				  </ul>
+				  <ul class="copyright">
+					  <li>&copy; Kenneth Ruan</li>
+					  <li>Design: <a href="http://templated.co">TEMPLATED</a></li>
+					  <li>Images: <a href="http://unsplash.com">Unsplash</a></li>
+				  </ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
