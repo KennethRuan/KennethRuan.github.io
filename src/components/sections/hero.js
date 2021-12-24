@@ -56,11 +56,11 @@ const classNameGenerator = (...classes)=>{
 }
 
 const CityController = ({ time }) => {
-    // var dt = new Date();
-    // var h = dt.getHours();
-    // var m = dt.getMinutes();
+    var dt = new Date();
+    var h = dt.getHours();
+    var m = dt.getMinutes();
 
-    // time = h*60+m;
+    time = h*60+m;
 
     var lb = parseInt(time);
     var rb = lb+SAMPLE_RANGE; 
@@ -115,19 +115,19 @@ const CityController = ({ time }) => {
         <>
             <div className={cityContainer} style={{"background":bg}}>
                 <div className={title}>
-                    <img src="/title.svg" alt="Title"/>
+                    <img src="./title.svg" alt="Title"/>
                 </div>
-                <img className={city4} src="/city-4.svg" alt="City Component 4"/>
-                <img className={city3} src="/city-3.svg" alt="City Component 3"/>
-                <img className={city2} src="/city-2.svg" alt="City Component 2"/>
-                <img className={city1} src="/city-1.svg" alt="City Component 1"/>
-                <img className={moon} src="/moon.svg" alt="Moon"
+                <img className={city4} src="./city-4.svg" alt="City Component 4"/>
+                <img className={city3} src="./city-3.svg" alt="City Component 3"/>
+                <img className={city2} src="./city-2.svg" alt="City Component 2"/>
+                <img className={city1} src="./city-1.svg" alt="City Component 1"/>
+                <img className={moon} src="./moon.svg" alt="Moon"
                 style={{
                     top: `${100+100*Math.sin(radians(-moonPos))}%`,
                     left: `${50+50*Math.cos(radians(-moonPos))}%`,
                     transform: "translate(-50%, -50%)"
                 }}/>
-                <img className={sun} src="/sun.svg" alt="Sun"
+                <img className={sun} src="./sun.svg" alt="Sun"
                     style={{
                         top: `${100+100*Math.sin(radians(-sunPos))}%`,
                         left: `${50+50*Math.cos(radians(-sunPos))}%`,
