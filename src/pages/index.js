@@ -9,10 +9,16 @@ import About from "../components/sections/about"
 import Seo from "../components/seo"
 import "../styles/global.css"
 
+var dt = new Date();
+var h = dt.getHours();
+var m = dt.getMinutes();
+
+var time = h*60+m;
+
 const IndexPage = () => (
   <div>
     <Seo title="Home" />
-    <Hero initialTime={1} minTime={1} maxTime={1440}/>
+    <Hero initialTime={time} minTime={1} maxTime={1440}/>
     <About/>
     <Jobs/>
     <Gallery/>

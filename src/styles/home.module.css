@@ -6,6 +6,8 @@ body, html {
 .cityContainer{
     position: relative;
     height: 100%;
+    width: 100vw;
+    max-width:100%;
     display: grid;
     grid-template-columns: 1fr;
     grid-row-start: 1;
@@ -17,27 +19,50 @@ body, html {
     overflow-y: hidden;
 }
 
-.cityContainer img{
+.cityContainer > img{
     grid-column: 1;
     grid-row: 1;
     margin: 0;
     padding: 0;
 }
 
+.title{
+    grid-column: 1;
+    grid-row: 1;
+    z-index: 1;
+    width: 60vw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15%;
+}
+
 .city1 {
     z-index: 4;
+    height: 100%;
+    width: 100vw;
+    max-width:100%;
 }
 
 .city2 {
     z-index: 3;
+    height: 100%;
+    width: 100vw;
+    max-width:100%;
 }
 
 .city3 {
     z-index: 2;
+    height: 100%;
+    width: 100vw;
+    max-width:100%;
 }
 
 .city4 {
     z-index: 1;
+    height: 100%;
+    width: 100vw;
+    max-width:100%;
 }
 
 .sun{
@@ -48,6 +73,8 @@ body, html {
     margin: 0;
     padding: 0;
     z-index: -1;
+    width: 7.5vw;
+    height: auto;
 }
 
 .moon{
@@ -58,11 +85,8 @@ body, html {
     margin: 0;
     padding: 0;
     z-index: -1;
-}
-
-.cityElem{
-    margin: 0;
-    padding: 0;
+    width: 7.5vw;
+    height: auto;
 }
 
 .section{

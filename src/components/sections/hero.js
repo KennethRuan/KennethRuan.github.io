@@ -1,18 +1,18 @@
 import { graphql } from 'gatsby';
 import React, {useState} from 'react'
-import {section, cityContainer, cityElem, slider, sliderContainer, sun, moon, city1, city2, city3, city4} from '../../styles/home.module.css'
+import {section, cityContainer, cityElem, slider, sliderContainer, sun, moon, city1, city2, city3, city4, title} from '../../styles/home.module.css'
 import Slider from '@mui/material/Slider';
 
 
 const MINS = 1440; 
-const SAMPLE_RANGE = 60;
+const SAMPLE_RANGE = 240;
 //Gradient for Day/Night Cycle
 var stops = [[0.00*MINS,'#0a0c10'],
             [0.17*MINS,'#1a222b'],  
             [0.21*MINS,'#8291b3'],
             [0.36*MINS,'#7cbbeb'],
-            [0.63*MINS,'#7cbbeb'],
-            [0.70*MINS,'#f8ce9c'],
+            [0.60*MINS,'#7cbbeb'],
+            [0.65*MINS,'#f8ce9c'],
             [0.74*MINS,'#f08784'],
             [0.78*MINS,'#8b666e'],
             [0.86*MINS,'#323039'],
@@ -36,6 +36,7 @@ const Hero = ({
 
     return (
         <div>
+            <CityController time={curTime}/>
             <div className={sliderContainer}>
                 <input
                 type="range"
@@ -46,7 +47,6 @@ const Hero = ({
                 onChange={handleChange}
                 />
             </div>
-            <CityController time={curTime}/>
         </div>
     )
 }
@@ -56,6 +56,12 @@ const classNameGenerator = (...classes)=>{
 }
 
 const CityController = ({ time }) => {
+    // var dt = new Date();
+    // var h = dt.getHours();
+    // var m = dt.getMinutes();
+
+    // time = h*60+m;
+
     var lb = parseInt(time);
     var rb = lb+SAMPLE_RANGE; 
 
@@ -108,10 +114,13 @@ const CityController = ({ time }) => {
     return (
         <>
             <div className={cityContainer} style={{"background":bg}}>
-                <img className={cityElem} className={city4} src="/city-4.svg" alt="City Component 4"/>
-                <img className={cityElem} className={city3} src="/city-3.svg" alt="City Component 3"/>
-                <img className={cityElem} className={city2} src="/city-2.svg" alt="City Component 2"/>
-                <img className={cityElem} className={city1} src="/city-1.svg" alt="City Component 1"/>
+                <div className={title}>
+                    <img src="/title.svg" alt="Title"/>
+                </div>
+                <img className={city4} src="/city-4.svg" alt="City Component 4"/>
+                <img className={city3} src="/city-3.svg" alt="City Component 3"/>
+                <img className={city2} src="/city-2.svg" alt="City Component 2"/>
+                <img className={city1} src="/city-1.svg" alt="City Component 1"/>
                 <img className={moon} src="/moon.svg" alt="Moon"
                 style={{
                     top: `${100+100*Math.sin(radians(-moonPos))}%`,
