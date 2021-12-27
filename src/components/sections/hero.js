@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby';
-import React, {useState} from 'react'
+import React, {Component, useState} from 'react'
 import {section, cityContainer, cityElem, slider, sliderContainer, sun, moon, city1, city2, city3, city4, title} from '../../styles/home.module.css'
 import Slider from '@mui/material/Slider';
 
@@ -24,31 +24,47 @@ function radians(degrees)
   return degrees * (Math.PI/180);
 }
 
-const Hero = ({
-    initialTime,
-    minTime,
-    maxTime
-}) => {
-    const [curTime, setCurTime] = useState(initialTime);
-    const handleChange = event => {
-        setCurTime(event.target.value);
+class Hero extends Component{
+    var ;
+    constructor(props){
+        super(props)
+        const {initialTime, minTime, maxTime} = this.props;
+        this.state = {
+            curTime: initialTime,
+            isClient: false
+        }
+    }
+
+    handleChange(event){
+        this.setState({curTime: event.target.value});
+        console.log("change handled");
     };
 
-    return (
-        <div>
-            <CityController time={curTime}/>
-            <div className={sliderContainer}>
-                <input
-                type="range"
-                className={slider}
-                min={minTime}
-                max={maxTime}
-                value={curTime}
-                onChange={handleChange}
-                />
-            </div>
-        </div>
-    )
+    render() {
+        const {initialTime, minTime, maxTime} = this.props;
+        return (
+            <React.Fragment key={this.state.isClient}>
+                <CityController time={this.state.curTime}/>
+                <div className={sliderContainer}>
+                    <input
+                    type="range"
+                    className={slider}
+                    min={minTime}
+                    max={maxTime}
+                    value={this.state.curTime}
+                    onChange={this.handleChange.bind(this)}
+                    />
+                </div>
+            </React.Fragment>
+        )
+    }
+    componentDidMount() {
+        const {initialTime, minTime, maxTime} = this.props;
+        this.setState(
+            {curTime: initialTime,
+            isClient: true });
+        console.log("component mounted");
+      }
 }
 
 const classNameGenerator = (...classes)=>{
@@ -56,12 +72,6 @@ const classNameGenerator = (...classes)=>{
 }
 
 const CityController = ({ time }) => {
-    var dt = new Date();
-    var h = dt.getHours();
-    var m = dt.getMinutes();
-
-    time = h*60+m;
-
     var lb = parseInt(time);
     var rb = lb+SAMPLE_RANGE; 
 
@@ -110,6 +120,8 @@ const CityController = ({ time }) => {
 
     var sunPos = (lb+SAMPLE_RANGE/2)/1440*360-90;
     var moonPos = (lb+SAMPLE_RANGE/2)/1440*360+90;
+
+    console.log(bg);
 
     return (
         <>
