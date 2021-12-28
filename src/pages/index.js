@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout";
 import Hero from "../components/sections/hero"
+import Header from "../components/header"
 import Jobs from "../components/sections/jobs"
 import Gallery from "../components/sections/gallery"
 import Contact from "../components/sections/contact"
@@ -20,6 +21,7 @@ const IndexPage = () => {
     <div>
       <Seo title="Home" />
       <Hero initialTime={time} minTime={1} maxTime={1440}/>
+      <Header/>
       <About/>
       <Jobs/>
       <Gallery/>

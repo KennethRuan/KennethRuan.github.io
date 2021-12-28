@@ -1,6 +1,7 @@
 import { graphql } from 'gatsby';
 import React, {Component, useState} from 'react'
-import {section, cityContainer, cityElem, slider, sliderContainer, sun, moon, city1, city2, city3, city4, title} from '../../styles/home.module.css'
+import {cityContainer, sliderContainer, sun, moon, city1, city2, city3, city4, title} from '../../styles/hero.module.css'
+import { section } from '../../styles/global.css'
 import Slider from '@mui/material/Slider';
 
 
@@ -25,14 +26,13 @@ function radians(degrees)
 }
 
 class Hero extends Component{
-    var ;
     constructor(props){
-        super(props)
+        super(props);
         const {initialTime, minTime, maxTime} = this.props;
         this.state = {
             curTime: initialTime,
             isClient: false
-        }
+        };
     }
 
     handleChange(event){
@@ -45,7 +45,7 @@ class Hero extends Component{
         return (
             <React.Fragment key={this.state.isClient}>
                 <CityController time={this.state.curTime}/>
-                <div className={sliderContainer}>
+                {/* <div className={sliderContainer}>
                     <input
                     type="range"
                     className={slider}
@@ -54,7 +54,7 @@ class Hero extends Component{
                     value={this.state.curTime}
                     onChange={this.handleChange.bind(this)}
                     />
-                </div>
+                </div> */}
             </React.Fragment>
         )
     }
@@ -118,8 +118,8 @@ const CityController = ({ time }) => {
     }
     bg += ')'
 
-    var sunPos = (lb+SAMPLE_RANGE/2)/1440*360-90;
-    var moonPos = (lb+SAMPLE_RANGE/2)/1440*360+90;
+    var sunPos = (lb)/1440*360-90;
+    var moonPos = (lb)/1440*360+90;
 
     console.log(bg);
 

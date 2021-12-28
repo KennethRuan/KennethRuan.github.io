@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
-import { section } from '../../styles/home.module.css'
+import '../../styles/global.css'
 
 const Jobs = () => {
     // const data = useStaticQuery(graphql`
@@ -26,7 +26,7 @@ const Jobs = () => {
     // `);
     // const jobsData = data.jobs.edges;
     return(
-        <div className={section}>
+        <div className={"section"}>
             <h1>
                 jobs
             </h1>
