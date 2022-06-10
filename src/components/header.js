@@ -7,12 +7,15 @@ class Header extends Component{
         super(props);
         this.state = {
             translate: 0,
-            opacity: 0
+            opacity: 0,
         };
     }
 
     componentDidMount(){
         window.addEventListener('scroll', this.handleScroll.bind(this));
+        this.setState({
+            innerHeight: window.innerHeight
+        });
     };
     
     componentWillUnmount(){
@@ -47,7 +50,7 @@ class Header extends Component{
                         RUAN
                     </Link>
                 </div>
-                <div className={headerContainer} style={{"position": "fixed", "display":this.state.translate > -window.innerHeight+42 ? "none" : "flex"}}>
+                <div className={headerContainer} style={{"position": "fixed", "display":this.state.translate > -this.state.innerHeight+42 ? "none" : "flex"}}>
                     <div className={headerMenu}>
                         <li className={headerItem}>
                             <p style={{"opacity": `${this.state.opacity}`}}> RESUME </p>
