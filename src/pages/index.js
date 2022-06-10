@@ -4,10 +4,12 @@ import { StaticImage } from "gatsby-plugin-image"
 import Layout from "../components/layout";
 import Hero from "../components/sections/hero"
 import Header from "../components/header"
+import Navbar from "../components/navbar"
 import Jobs from "../components/sections/jobs"
 import Gallery from "../components/sections/gallery"
 import Contact from "../components/sections/contact"
 import About from "../components/sections/about"
+import Projects from "../components/sections/projects"
 import Seo from "../components/seo"
 import "../styles/global.css"
 
@@ -20,12 +22,14 @@ const IndexPage = () => {
   return(
     <div>
       <Seo title="Home" />
-      <Hero initialTime={time} minTime={1} maxTime={1440}/>
+      <Hero initialTime={time} minTime={1} maxTime={1440} id="hero"/>
       <Header/>
-      <About/>
-      <Jobs/>
-      <Gallery/>
-      <Contact/>
+      <About />
+      <Jobs />
+      <Projects />
+      <Gallery />
+      <Contact />
+      <Navbar/>
     </div>
   );
 };

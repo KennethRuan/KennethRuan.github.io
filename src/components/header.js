@@ -1,12 +1,12 @@
 import { graphql, Link} from 'gatsby'
 import React, { Component } from 'react'
-import { headerContainer, spacer, headerMenu, headerItem, headerLogo } from '../styles/header.module.css'
+import { headerContainer, headerMenu, headerItem, headerLogo } from '../styles/header.module.css'
 
 class Header extends Component{
     constructor(props){
         super(props);
         this.state = {
-            transform: 0,
+            translate: 0,
             opacity: 0
         };
     }
@@ -20,10 +20,12 @@ class Header extends Component{
     };
 
     handleScroll(){
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        const winScroll = document.documentElement.scrollTop;
         const height = window.innerHeight;
 
-        var vertTranslate = Math.max(-winScroll, -height+80);
+        // console.log(winScroll);
+
+        var vertTranslate = Math.max(-winScroll, -height+42);
         var headerOpacity = winScroll/(height+80);
 
         this.setState({
@@ -34,17 +36,28 @@ class Header extends Component{
 
     render() {
         return (
-            <div className={headerContainer} style={{"transform":`translate(0, ${this.state.translate}px)`}}>
-                <div className={headerMenu}>
-                    <li className={headerItem}>
-                        <p style={{"opacity": `${this.state.opacity}`}}> RESUME </p>
-                    </li>
-                    <li className={spacer}/>
+            <>
+                <div className={headerContainer} style={{"position": "relative"}}>
+                    <div className={headerMenu}>
+                        <li className={headerItem}>
+                            <p style={{"opacity": `${this.state.opacity}`}}> RESUME </p>
+                        </li>
+                    </div>
+                    <Link to="/" className={headerLogo} style={{"opacity": `${this.state.opacity}`}}>
+                        RUAN
+                    </Link>
                 </div>
-                <Link to="/" className={headerLogo} style={{"opacity": `${this.state.opacity}`}}>
-                    RUAN
-                </Link>
-            </div>
+                <div className={headerContainer} style={{"position": "fixed", "display":this.state.translate > -window.innerHeight+42 ? "none" : "flex"}}>
+                    <div className={headerMenu}>
+                        <li className={headerItem}>
+                            <p style={{"opacity": `${this.state.opacity}`}}> RESUME </p>
+                        </li>
+                    </div>
+                    <Link to="/" className={headerLogo} style={{"opacity": `${this.state.opacity}`}}>
+                        RUAN
+                    </Link>
+                </div>
+            </>
         );
     }
 };

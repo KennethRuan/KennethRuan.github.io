@@ -26,9 +26,9 @@ const Jobs = () => {
     // `);
     // const jobsData = data.jobs.edges;
     return(
-        <div className={"section"}>
+        <div className={"section"} style={{height: "50vw"}} id="jobs">
             <h1>
-                jobs
+                Experience
             </h1>
         </div>
     );

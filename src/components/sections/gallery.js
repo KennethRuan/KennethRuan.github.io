@@ -3,8 +3,10 @@ import React from 'react'
 
 const Gallery = () => {
     return (
-        <div>
-
+        <div className={"section"} style={{height: "50vw"}} id="gallery">
+            <h1>
+                Gallery
+            </h1>
         </div>
     );
 };

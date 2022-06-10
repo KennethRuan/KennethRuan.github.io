@@ -31,8 +31,10 @@ class Hero extends Component{
         const {initialTime, minTime, maxTime} = this.props;
         this.state = {
             curTime: initialTime,
-            isClient: false
+            isClient: false.valueOf,
+            offsetY: 0
         };
+        this.heroRef=React.createRef();
     }
 
     handleChange(event){
@@ -43,35 +45,53 @@ class Hero extends Component{
     render() {
         const {initialTime, minTime, maxTime} = this.props;
         return (
-            <React.Fragment key={this.state.isClient}>
-                <CityController time={this.state.curTime}/>
-                {/* <div className={sliderContainer}>
-                    <input
-                    type="range"
-                    className={slider}
-                    min={minTime}
-                    max={maxTime}
-                    value={this.state.curTime}
-                    onChange={this.handleChange.bind(this)}
-                    />
-                </div> */}
-            </React.Fragment>
+            <div id="hero" ref={this.heroRef}>
+                <React.Fragment key={this.state.isClient}>
+                    <CityController time={this.state.curTime} offsetY={this.state.offsetY} />
+                    {/* <div className={sliderContainer}>
+                        <input
+                        type="range"
+                        className={slider}
+                        min={minTime}
+                        max={maxTime}
+                        value={this.state.curTime}
+                        onChange={this.handleChange.bind(this)}
+                        />
+                    </div> */}
+                </React.Fragment>
+            </div>
         )
     }
     componentDidMount() {
         const {initialTime, minTime, maxTime} = this.props;
+        window.addEventListener('scroll', this.handleScroll.bind(this));
+
         this.setState(
             {curTime: initialTime,
             isClient: true });
         console.log("component mounted");
-      }
+        console.log(this.heroRef.current.scrollHeight);
+    }
+    componentWillUnmount(){
+        window.removeEventListener('scroll', this.handleScroll.bind(this));
+    }
+
+    handleScroll(){
+        const winScroll = document.documentElement.scrollTop;
+        const height = window.innerHeight;
+
+        this.setState({
+            offsetY: winScroll
+        });
+        console.log(this.state.offsetY);
+    }
 }
 
 const classNameGenerator = (...classes)=>{
     return classes.join(" ")
 }
 
-const CityController = ({ time }) => {
+const CityController = ({ time, offsetY }) => {
     var lb = parseInt(time);
     var rb = lb+SAMPLE_RANGE; 
 
@@ -121,29 +141,29 @@ const CityController = ({ time }) => {
     var sunPos = (lb)/1440*360-90;
     var moonPos = (lb)/1440*360+90;
 
-    console.log(bg);
+    // console.log(bg);
 
     return (
         <>
-            <div className={cityContainer} style={{"background":bg}}>
+            <div className={cityContainer} style={{background:bg}}>
                 <div className={title}>
                     <img src="./title.svg" alt="Title"/>
                 </div>
-                <img className={city4} src="./city-4.svg" alt="City Component 4"/>
-                <img className={city3} src="./city-3.svg" alt="City Component 3"/>
-                <img className={city2} src="./city-2.svg" alt="City Component 2"/>
+                <img className={city4} src="./city-4.svg" alt="City Component 4" style={{"transform": `translateY(${offsetY*0.8}px)`}}/>
+                <img className={city3} src="./city-3.svg" alt="City Component 3" style={{"transform": `translateY(${offsetY*0.3}px)`}}/>
+                <img className={city2} src="./city-2.svg" alt="City Component 2" style={{"transform": `translateY(${offsetY*0.5}px)`}}/>
                 <img className={city1} src="./city-1.svg" alt="City Component 1"/>
                 <img className={moon} src="./moon.svg" alt="Moon"
                 style={{
                     top: `${100+100*Math.sin(radians(-moonPos))}%`,
                     left: `${50+50*Math.cos(radians(-moonPos))}%`,
-                    transform: "translate(-50%, -50%)"
+                    transform: `translate(-50%, -50%) translateY(${offsetY*0.1}px)`
                 }}/>
                 <img className={sun} src="./sun.svg" alt="Sun"
                     style={{
                         top: `${100+100*Math.sin(radians(-sunPos))}%`,
                         left: `${50+50*Math.cos(radians(-sunPos))}%`,
-                        transform: "translate(-50%, -50%)"
+                        transform: `translate(-50%, -50%) translateY(${offsetY*0.1}px)`
                 }}/>
             </div>
             

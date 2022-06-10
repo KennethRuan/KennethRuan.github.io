@@ -3,6 +3,7 @@
 :root {
     --eclipse-blue:#1b2232;
     --jazz-blue: #3b4a6a;
+    --kashmir-blue: #4d5f88;
 }
 
 * {
@@ -13,7 +14,17 @@
 }
 
 .section{
-    height: 50vw;
+    /* height: 50vw; */
     width: 100%;
     background-color: var(--eclipse-blue);
+    padding-left: 10%;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    
+}
+::-webkit-scrollbar-thumb {
+    background: var(--kashmir-blue);
+    border-radius: 4px;
 }
