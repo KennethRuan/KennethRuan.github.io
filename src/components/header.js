@@ -13,26 +13,25 @@ class Header extends Component{
 
     componentDidMount(){
         window.addEventListener('scroll', this.handleScroll.bind(this));
-        this.setState({
-            innerHeight: window.innerHeight
-        });
+        // window.addEventListener('resize', this.handleResize.bind(this));
     };
     
     componentWillUnmount(){
         window.removeEventListener('scroll', this.handleScroll.bind(this));
     };
 
+    handleResize(){
+        this.setState({
+            innerHeight: document.getElementById('hero').offsetHeight
+        });
+    }
+
     handleScroll(){
-        const winScroll = document.documentElement.scrollTop;
-        const height = window.innerHeight;
-
-        // console.log(winScroll);
-
-        var vertTranslate = Math.max(-winScroll, -height+42);
+        var winScroll = document.documentElement.scrollTop;
+        var height = window.innerHeight;
         var headerOpacity = winScroll/(height+80);
 
         this.setState({
-            translate: vertTranslate,
             opacity: headerOpacity
         });
     }
@@ -40,17 +39,7 @@ class Header extends Component{
     render() {
         return (
             <>
-                <div className={headerContainer} style={{"position": "relative"}}>
-                    <div className={headerMenu}>
-                        <li className={headerItem}>
-                            <p style={{"opacity": `${this.state.opacity}`}}> RESUME </p>
-                        </li>
-                    </div>
-                    <Link to="/" className={headerLogo} style={{"opacity": `${this.state.opacity}`}}>
-                        RUAN
-                    </Link>
-                </div>
-                <div className={headerContainer} style={{"position": "fixed", "display":this.state.translate > -this.state.innerHeight+42 ? "none" : "flex"}}>
+                <div className={headerContainer}>
                     <div className={headerMenu}>
                         <li className={headerItem}>
                             <p style={{"opacity": `${this.state.opacity}`}}> RESUME </p>

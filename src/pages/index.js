@@ -26,9 +26,10 @@ const IndexPage = () => {
       <Header/>
       <About />
       <Jobs />
-      <Projects />
-      <Gallery />
-      <Contact />
+      <Projects/>
+      <Gallery/>
+      <Contact/>
+      
       <Navbar/>
     </div>
   );

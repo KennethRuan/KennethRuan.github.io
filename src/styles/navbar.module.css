@@ -1,14 +1,14 @@
 .navbarContainer {
     position: fixed;
     bottom: 0;
-    left: 0;
+    left: 1%;
     top: 0;
     padding-left: 0;
     width: 10%;
 
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 
     color: #fff;
@@ -16,6 +16,7 @@
 
 .navbarList{
     list-style-type: none;
+    left: 0;
 }
 
 .activeTab {
@@ -23,7 +24,8 @@
     color: #FFF;
     outline: none;
     border: none;
-    transition: color .2s ease-in;
+    transition: color .2s ease-in, font-size .2s;
+    font-size: 1.5em;
 }
 
 .tabs {
@@ -31,6 +33,7 @@
     color: rgb(160, 214, 243);
     outline: none;
     border: none;
-    transition: color .2s ease-in;
+    transition: color .2s ease-in, font-size .2s;
+    font-size: 1em;
 }
 

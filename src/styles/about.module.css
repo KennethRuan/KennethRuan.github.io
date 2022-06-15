@@ -1,0 +1,28 @@
+.aboutContainer{
+    transform: none;
+}
+
+.skillsList{
+    display: grid;
+    grid-template-columns: repeat(2, minmax(140px, 200px));
+    padding: 0;
+    margin: 20px 0 0 0;
+    overflow: hidden;
+    list-style: none;
+}
+
+.skillsList > li{
+    position: relative;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    font-size: .8em;
+}
+
+.skillsList > li::before{
+    content: '▹';
+    position: absolute;
+    left: 0;
+    color: #FFF;
+    font-size: .8em;
+    line-height: 12px;
+}

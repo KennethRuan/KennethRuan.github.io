@@ -22,15 +22,15 @@ class Navbar extends Component{
             "gallery",
             "contact"
         ];
-        this.sectionScrolls = [];
-        console.log(this.sectionScrolls);
+        this.idToState = {
+            'about':1,
+            'jobs':2,
+            'projects':3,
+            'gallery':4,
+            'contact':5
+        };
+        
 
-        // Array.prototype.forEach.call(sectElements, function(elem) {
-        //     // this.sectionScrolls.push(elem.scrollHeight);
-        //     console.log(elem.scrollHeight);
-        // });
-
-        // console.log(this.sectionScrolls);
     }
 
     componentDidMount(){
@@ -42,7 +42,27 @@ class Navbar extends Component{
         // }
        
         // console.log(ReactDOM.findDOMNode("hero"));
-        window.addEventListener('scroll', this.handleScroll.bind(this));
+        window.addEventListener('scroll', this.handleScroll.bind(this));    
+        
+        // Can be modularized
+        let observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting){
+                    if (entry.target.id in this.idToState){
+                        this.setState({
+                            active: this.idToState[entry.target.id]
+                        });
+                        console.log("smth happened");
+                    }
+                    else {
+                        console.log("key not found");
+                    }
+                }
+            });
+        }, {threshold: 0.5});
+
+        document.querySelectorAll('.section').forEach(p => {observer.observe(p)});
+        console.log(document.querySelectorAll('.section'));
     };
     
     componentWillUnmount(){
@@ -50,10 +70,10 @@ class Navbar extends Component{
     };
 
     handleScroll(){
-        const winScroll = document.documentElement.scrollTop;
-        const height = window.innerHeight;
+        var winScroll = document.documentElement.scrollTop;
+        var height = window.innerHeight;
 
-        console.log(winScroll);
+        // console.log(winScroll);
 
         var tr = -30*(winScroll/height)+25
         var navbarOpacity = 1/(1+Math.pow(Math.E, tr))
@@ -62,41 +82,42 @@ class Navbar extends Component{
         });
     }
 
-    handleClick(btnNum){
-        this.setState({ 
-            active: btnNum
-        });
-        console.log(btnNum);
-    }
+    // handleClick(btnNum){
+    //     console.log(btnNum);
+    //     this.setState({ 
+    //         autoscrolling: true,
+    //         active: btnNum
+    //     });
+    // }
 
     render(){
         return(
             //implement code that obstructs the entire tab if it is on the hero page, so invisible buttons arent pressed
             <div className={navbarContainer} style={{"opacity": `${this.state.opacity}`}}>
                 <ul className={navbarList}>
-                    <li onClick={() => this.handleClick(1)}>
-                        <button className={this.state.active === 1 ? activeTab : tabs} > 
-                        <Link to="about" spy={true} smooth={true} offset={-80} duration={500}> About </Link>
+                    <li>
+                        <button className={this.state.active === 1 ? activeTab : tabs}> 
+                        <Link to="about" spy={true} smooth={true} offset={-80} duration={500}> ABOUT </Link>
                         </button>
                     </li>
-                    <li onClick={() => this.handleClick(2)}>
+                    <li>
                         <button className={this.state.active === 2 ? activeTab : tabs} > 
-                        <Link to="jobs" spy={true} smooth={true} offset={-80} duration={500}> Experience </Link>
+                        <Link to="jobs" spy={true} smooth={true} offset={-80} duration={500}> EXPERIENCE </Link>
                         </button>
                     </li>
-                    <li onClick={() => this.handleClick(3)}>
+                    <li>
                         <button className={this.state.active === 3 ? activeTab : tabs} > 
-                        <Link to="projects" spy={true} smooth={true} offset={-80} duration={500}> Projects </Link>
+                        <Link to="projects" spy={true} smooth={true} offset={-80} duration={500}> PROJECTS </Link>
                         </button>
                     </li>
-                    <li onClick={() => this.handleClick(4)}>
+                    <li>
                         <button className={this.state.active === 4 ? activeTab : tabs}> 
-                        <Link to="gallery" spy={true} smooth={true} offset={-80} duration={500}> Gallery </Link>
+                        <Link to="gallery" spy={true} smooth={true} offset={-80} duration={500}> GALLERY </Link>
                         </button>
                     </li>
-                    <li onClick={() => this.handleClick(5)}>
+                    <li>
                         <button className={this.state.active === 5 ? activeTab : tabs}> 
-                        <Link to="contact" spy={true} smooth={true} offset={-80} duration={500}> Contact </Link>
+                        <Link to="contact" spy={true} smooth={true} offset={-80} duration={500}> CONTACT </Link>
                         </button>
                     </li>
                 </ul>

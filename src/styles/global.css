@@ -13,11 +13,18 @@
     font-family: "Open Sans Condensed", sans-serif;
 }
 
+h1 {
+    font-family: "Open Sans Condensed", sans-serif;
+}
+
 .section{
     /* height: 50vw; */
     width: 100%;
     background-color: var(--eclipse-blue);
-    padding-left: 10%;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 30vh;
+    color: #fff;
 }
 
 ::-webkit-scrollbar {

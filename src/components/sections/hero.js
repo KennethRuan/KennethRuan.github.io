@@ -69,8 +69,8 @@ class Hero extends Component{
         this.setState(
             {curTime: initialTime,
             isClient: true });
-        console.log("component mounted");
-        console.log(this.heroRef.current.scrollHeight);
+        // console.log("component mounted");
+        // console.log(this.heroRef.current.scrollHeight);
     }
     componentWillUnmount(){
         window.removeEventListener('scroll', this.handleScroll.bind(this));
@@ -83,7 +83,7 @@ class Hero extends Component{
         this.setState({
             offsetY: winScroll
         });
-        console.log(this.state.offsetY);
+        // console.log(this.state.offsetY);
     }
 }
 
@@ -127,7 +127,7 @@ const CityController = ({ time, offsetY }) => {
             break;
         }
     }
-    console.log(grad);
+    // console.log(grad);
 
     var gradPos = String((lb+SAMPLE_RANGE/2)/1440*180-90)
 
