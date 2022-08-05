@@ -3,7 +3,9 @@
 :root {
     --eclipse-blue:#1b2232;
     --jazz-blue: #3b4a6a;
-    --kashmir-blue: #4d5f88;
+    --kashmir-blue: #50648c;
+    --debonair-blue: #253650;
+    --cream: #e9c6af;
 }
 
 * {
@@ -25,6 +27,11 @@ h1 {
     padding-right: 15%;
     padding-top: 30vh;
     color: #fff;
+}
+
+.section > h1{
+    font-size: 3em;
+    font-weight: normal;
 }
 
 ::-webkit-scrollbar {

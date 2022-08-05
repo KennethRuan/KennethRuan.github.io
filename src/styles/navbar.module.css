@@ -19,18 +19,23 @@
     left: 0;
 }
 
+.navbarList > li{
+    margin-bottom: auto;
+}
+
 .activeTab {
     background: none;
     color: #FFF;
     outline: none;
     border: none;
     transition: color .2s ease-in, font-size .2s;
-    font-size: 1.5em;
+    font-size: 2em;
+    margin-top: 0.2em;
 }
 
 .tabs {
     background: none;
-    color: rgb(160, 214, 243);
+    color: var(--kashmir-blue);
     outline: none;
     border: none;
     transition: color .2s ease-in, font-size .2s;

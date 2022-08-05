@@ -2,7 +2,7 @@ import { paperClasses } from '@mui/material';
 import { graphql} from 'gatsby'
 import React, { Component } from 'react'
 import { Link } from 'react-scroll'
-import { navbarContainer, navbarList, tabs, activeTab} from '../styles/navbar.module.css'
+import { navbarContainer, navbarList, navbarItem, tabs, activeTab} from '../styles/navbar.module.css'
 import ReactDOM from 'react-dom';
 
 class Navbar extends Component{
@@ -95,29 +95,29 @@ class Navbar extends Component{
             //implement code that obstructs the entire tab if it is on the hero page, so invisible buttons arent pressed
             <div className={navbarContainer} style={{"opacity": `${this.state.opacity}`}}>
                 <ul className={navbarList}>
-                    <li>
+                    <li className={navbarItem}>
                         <button className={this.state.active === 1 ? activeTab : tabs}> 
-                        <Link to="about" spy={true} smooth={true} offset={-80} duration={500}> ABOUT </Link>
+                        <Link to="about" spy={true} smooth={true} offset={0} duration={500}> ABOUT </Link>
                         </button>
                     </li>
-                    <li>
-                        <button className={this.state.active === 2 ? activeTab : tabs} > 
-                        <Link to="jobs" spy={true} smooth={true} offset={-80} duration={500}> EXPERIENCE </Link>
+                    <li className={navbarItem}>
+                    <button className={this.state.active === 2 ? activeTab : tabs} > 
+                        <Link to="jobs" spy={true} smooth={true} offset={0} duration={500}> EXPERIENCE </Link>
                         </button>
                     </li>
-                    <li>
+                    <li className={navbarItem}>
                         <button className={this.state.active === 3 ? activeTab : tabs} > 
-                        <Link to="projects" spy={true} smooth={true} offset={-80} duration={500}> PROJECTS </Link>
+                        <Link to="projects" spy={true} smooth={true} offset={0} duration={500}> PROJECTS </Link>
                         </button>
                     </li>
-                    <li>
+                    <li className={navbarItem}>
                         <button className={this.state.active === 4 ? activeTab : tabs}> 
-                        <Link to="gallery" spy={true} smooth={true} offset={-80} duration={500}> GALLERY </Link>
+                        <Link to="gallery" spy={true} smooth={true} offset={0} duration={500}> GALLERY </Link>
                         </button>
                     </li>
-                    <li>
+                    <li className={navbarItem}>
                         <button className={this.state.active === 5 ? activeTab : tabs}> 
-                        <Link to="contact" spy={true} smooth={true} offset={-80} duration={500}> CONTACT </Link>
+                        <Link to="contact" spy={true} smooth={true} offset={0} duration={500}> CONTACT </Link>
                         </button>
                     </li>
                 </ul>

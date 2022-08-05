@@ -1,0 +1,64 @@
+.cardsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px;
+    position: relative;
+    margin-top: 50px;
+}
+
+.cardContainer {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    position: relative;
+    height: 100%;
+    padding: 2rem 1.75rem;
+    background-color: var(--debonair-blue);
+}
+
+.projectTitle {
+    margin: 0 0 10px;
+    color: var(--cream);
+    font-weight: bold;
+}
+
+.projectTitle > a {
+    font-size: 1.5em;
+    color: var(--cream);
+}
+  
+.projectDescription {
+    color: var(--cream);
+    font-size: 0.9em;
+
+}
+ 
+.projectTags {
+    justify-self: end;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 20px 0 0 0;
+    list-style: none;
+    color:var(--cream);
+    opacity: 50%;
+}
+
+.projectTags > li {
+    font-size: 0.8em;
+    line-height: 1.75;
+    margin-bottom: 2px;
+    font-family: monospace;
+}
+
+.projectTags > li:not(:last-of-type){
+    margin-right: 15px;
+}
+
+.folder {
+    color: var(--cream);
+    width: 40px;
+    height: 40px;
+}
