@@ -3,7 +3,7 @@ date: '2022-06-29'
 company: 'MSC'
 title: 'President'
 location: 'Toronto, ON'
-range: 'September 2021 - June 2022'
+range: 'June 2021 - June 2022'
 url: 'mcpt.ca'
 showInJobs: true
 ---
