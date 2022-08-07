@@ -110,7 +110,7 @@ class Navbar extends Component{
                         <Link to="projects" spy={true} smooth={true} offset={0} duration={500}> PROJECTS </Link>
                         </button>
                     </li>
-                    <li className={navbarItem}>
+                    {/* <li className={navbarItem}>
                         <button className={this.state.active === 4 ? activeTab : tabs}> 
                         <Link to="gallery" spy={true} smooth={true} offset={0} duration={500}> GALLERY </Link>
                         </button>
@@ -119,7 +119,7 @@ class Navbar extends Component{
                         <button className={this.state.active === 5 ? activeTab : tabs}> 
                         <Link to="contact" spy={true} smooth={true} offset={0} duration={500}> CONTACT </Link>
                         </button>
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         )

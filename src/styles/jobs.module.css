@@ -1,0 +1,142 @@
+.experienceTab{
+    background: var(--midnight-blue);
+    flex-flow:column;
+    box-sizing: border-box;
+}
+
+.tabTitle{
+    width: 100%;
+    text-align: left;
+    display: flex;
+    position: relative;
+    white-space: nowrap;
+}
+
+.tabTitle::after {
+    content: '';
+    display: block;
+    position: relative;
+    top: 34px;
+    width: 100%;
+    height: 2px;
+    margin-left: 20px;
+    background-color: #fff;
+}
+
+.tabContainer{
+    display: flex;
+    flex-flow: row;
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+    background: var(--midnight-blue);
+    box-sizing: border-box;
+}
+
+.blocTabs {
+    width: 200px;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.tabs {
+    padding: 15px 15px;
+    text-align: center;
+    /* width: calc(100%-30px); */
+    min-width: 100px;
+    height: 30px;
+    background: var(--debonair-blue);
+    color: var(--cream);
+    box-sizing: content-box;
+    position: relative;
+    outline: none;
+    transition: color .2s ease-in;
+}
+
+.tabs:hover{
+    opacity: 1;
+    background: var(--kashmir-blue);
+    color:#FFF;
+}
+
+.activeTab  {
+    background: var(--kashmir-blue);
+    color:#FFF;
+    border-bottom: 1px solid transparent;
+}
+
+.tabs::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 102%;
+    background: var(--cream);
+}
+
+
+.activeTab::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: -5px;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 100%;
+    background: #fff;
+}
+
+button {
+    border: none;
+}
+
+.contentTabs {
+    flex-grow : 1;
+    height: 300px;
+    width: 100%;
+}
+.content {
+    padding: 20px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.content h2 {
+    color: #FFF;
+    padding: 0px 0 2px 0px;
+    font-weight: normal;
+}
+.content h3 {
+    color: #FFF;
+    font-size: 16px;
+    padding: 0px 0 5px 0px;
+    font-weight: normal;
+}
+.content hr {
+    width: 100px;
+    height: 2px;
+    background: #FFF;
+    margin-bottom: 5px;
+}
+.content p {
+    padding: 10px 0 0 0;
+    color: #9b9b9b;
+}
+.activeContent {
+    display: block;
+}
+
+.highlight {
+    color: var(--cream);
+}
+
+.jobDescription{
+    padding: 10px 0;
+    color: #9b9b9b;
+}

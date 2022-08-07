@@ -6,18 +6,34 @@ import Slider from '@mui/material/Slider';
 
 
 const MINS = 1440; 
-const SAMPLE_RANGE = 240;
+const SAMPLE_RANGE = 80;
 //Gradient for Day/Night Cycle
+//Standard Time (Winter)
+// var stops = [[0.00*MINS,'#0a0c10'],
+//             [0.17*MINS,'#1a222b'],  
+//             [0.21*MINS,'#8291b3'],
+//             [0.36*MINS,'#7cbbeb'],
+//             [0.60*MINS,'#7cbbeb'],
+//             [0.65*MINS,'#f8ce9c'],
+//             [0.74*MINS,'#f08784'],
+//             [0.78*MINS,'#8b666e'],
+//             [0.86*MINS,'#323039'],
+//             [1.00*MINS,'#0a0c10']];
+
+//Daylight Saving (Summer)
 var stops = [[0.00*MINS,'#0a0c10'],
             [0.17*MINS,'#1a222b'],  
             [0.21*MINS,'#8291b3'],
-            [0.36*MINS,'#7cbbeb'],
-            [0.60*MINS,'#7cbbeb'],
-            [0.65*MINS,'#f8ce9c'],
-            [0.74*MINS,'#f08784'],
-            [0.78*MINS,'#8b666e'],
-            [0.86*MINS,'#323039'],
+            [0.25*MINS,'#7cbbeb'],
+            [0.85*MINS,'#7cbbeb'],
+            [0.87*MINS,'#cec7b6'],
+            [0.88*MINS,'#f8ce9c'],
+            [0.89*MINS,'#f08784'],
+            [0.91*MINS,'#8b666e'],
+            [0.92*MINS,'#323039'],
             [1.00*MINS,'#0a0c10']];
+
+
 console.log(stops);
 
 function radians(degrees)

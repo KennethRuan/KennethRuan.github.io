@@ -1,5 +1,35 @@
 .aboutContainer{
     transform: none;
+    display: flex;
+    flex-flow: column;
+    margin: 0 auto;
+}
+
+.bioHeadshot{
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    margin: 16px 16px 16px 100px;
+    border-radius: 50%;
+}
+
+.bioWrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.bioText{
+    width: 100%;
+    max-width: 40vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color:#FFF;
+    border-radius: 20px;
 }
 
 .skillsList{
@@ -19,10 +49,10 @@
 }
 
 .skillsList > li::before{
-    content: '▹';
+    content: '•';
     position: absolute;
     left: 0;
     color: #FFF;
-    font-size: .8em;
-    line-height: 12px;
+    font-size: 1em;
+    line-height: 2em;
 }
