@@ -28,7 +28,7 @@ const Projects = () => {
     const projects = data.allMarkdownRemark.nodes
 
     return ( 
-        <div className={"section"} id="projects">
+        <div className="section" id="projects">
             <h1>Projects</h1>
             <div className={cardsGrid}>
                 {projects.map(project=>(

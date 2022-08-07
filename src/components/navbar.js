@@ -19,15 +19,15 @@ class Navbar extends Component{
             'about',
             "jobs",
             "projects",
-            "gallery",
-            "contact"
+            // "gallery",
+            // "contact"
         ];
         this.idToState = {
             'about':1,
             'jobs':2,
             'projects':3,
-            'gallery':4,
-            'contact':5
+            // 'gallery':4,
+            // 'contact':5
         };
         
 
@@ -44,7 +44,6 @@ class Navbar extends Component{
         // console.log(ReactDOM.findDOMNode("hero"));
         window.addEventListener('scroll', this.handleScroll.bind(this));    
         
-        // Can be modularized
         let observer = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting){
@@ -59,7 +58,7 @@ class Navbar extends Component{
                     }
                 }
             });
-        }, {threshold: 0.5});
+        }, {threshold: 0.25}); //look into having different thresholds based on screen size
 
         document.querySelectorAll('.section').forEach(p => {observer.observe(p)});
         console.log(document.querySelectorAll('.section'));
