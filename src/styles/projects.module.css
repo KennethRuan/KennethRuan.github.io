@@ -22,9 +22,20 @@
     font-weight: bold;
 }
 
-.projectTitle > a {
+.projectTitle a {
     font-size: 1.5em;
     color: var(--cream);
+}
+
+.projectTitle a::before{
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
   
 .projectDescription {
