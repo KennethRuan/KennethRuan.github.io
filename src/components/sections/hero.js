@@ -163,7 +163,7 @@ const CityController = ({ time, offsetY }) => {
         <>
             <div className={cityContainer} style={{background:bg}}>
                 <div className={title}>
-                    <img src="./title.svg" alt="Title"/>
+                    <img src="./title.svg" alt="Title" style={{"transform": `translateY(${offsetY*0.5}px)`}}/>
                 </div>
                 <img className={city4} src="./city-4.svg" alt="City Component 4" style={{"transform": `translateY(${offsetY*0.8}px)`}}/>
                 <img className={city3} src="./city-3.svg" alt="City Component 3" style={{"transform": `translateY(${offsetY*0.3}px)`}}/>

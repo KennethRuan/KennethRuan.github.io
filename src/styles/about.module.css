@@ -36,7 +36,7 @@
     display: grid;
     grid-template-columns: repeat(2, minmax(140px, 200px));
     padding: 0;
-    margin: 20px 0 0 0;
+    margin: 20px 0 20px 0;
     overflow: hidden;
     list-style: none;
 }
@@ -55,4 +55,9 @@
     color: #FFF;
     font-size: 1em;
     line-height: 2em;
+}
+
+.PSText{
+    font-size: 16px;
+    color: #627193;
 }

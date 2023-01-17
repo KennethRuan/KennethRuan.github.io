@@ -42,7 +42,12 @@ class Header extends Component{
                 <div className={headerContainer}>
                     <div className={headerMenu}>
                         <li className={headerItem}>
-                            <p style={{"opacity": `${this.state.opacity}`}}> RESUME </p>
+                            {/* <Link 
+                            to="https://drive.google.com/file/d/1PPG5CpMrMC8KkDrm2uXL6tqZYrSdp46c/view?usp=sharing" 
+                            style={{"opacity": `${this.state.opacity}`}}
+                            target="_blank"> 
+                                RESUME 
+                            </Link> */}
                         </li>
                     </div>
                     <Link to="/" className={headerLogo} style={{"opacity": `${this.state.opacity}`}}>

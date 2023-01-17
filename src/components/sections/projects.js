@@ -1,6 +1,6 @@
 import { graphql, Link, useStaticQuery } from 'gatsby';
 import React from 'react'
-import {cardsGrid, cardContainer, cardTop, cardContent, projectTitle, projectDescription, projectTags, folder, externalRef} from '../../styles/projects.module.css'
+import {cardsGrid, cardContainer, cardTop, cardContent, projectTitle, projectDescription, projectTags, folder, featureGrid, featureContainer, featureImage, featureLeft, featureRight, featureText, featureTitle} from '../../styles/projects.module.css'
 import '../../styles/global.css'
 
 
@@ -30,6 +30,25 @@ const Projects = () => {
     return ( 
         <div className="section" id="projects">
             <h1>Projects</h1>
+
+            {/* <div className={featureGrid}>
+                <div className={featureContainer}>
+                    <div className={featureLeft}>
+                        <div className={featureText}>
+                            <h1> Autoslide </h1>
+                            <p> An automatic image tool for PowerPOints, powered by machine learning. Autoslide automatically chooses images adn adds them to your powerpoints based on the content of your uploaded slides.</p>
+                        </div>
+                    </div>
+                    <div className={featureRight}>
+                        <div className={featureImage}>
+                            <img id="test" src="./img-2.jpg" />
+                        </div>
+                    </div>
+                </div>
+
+            </div> */}
+
+
             <div className={cardsGrid}>
                 {projects.map(project=>(
                 <div className={cardContainer}>

@@ -1,7 +1,7 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react'
 import '../../styles/global.css'
-import { aboutContainer, skillsList, bioText, bioHeadshot, bioWrapper} from '../../styles/about.module.css'
+import { aboutContainer, skillsList, bioText, bioHeadshot, bioWrapper, PSText} from '../../styles/about.module.css'
 
 
 const About = () => {
@@ -16,11 +16,12 @@ const About = () => {
                         <p>I love innovating and bringing new ideas to the table. Anything that involves creativity is my cup of tea! Whether it be graphic design, creating events or doing hackathons. My goal is always to build inventive and impactful projects.</p>
                         <p>Here are some things I'm currently exploring!</p>
                         <ul className={skillsList}>
-                            <li> Machine Learning </li>
+                            <li> Solar Race Cars </li>
                             <li> Learning Mandarin </li>
-                            <li> Stardew Valley </li>
-
+                            <li> Full-Stack Development </li>
+                            <li> Ultimate Frisbee </li>
                         </ul>
+                        <p className={PSText}>(Psst... before you continue, I wanted to let you know to try visiting my site at different times of the day!)</p>
                     </div>
                     <img src='./bio-pic.jpg' alt='Missing' className={bioHeadshot}/>
                 </div>

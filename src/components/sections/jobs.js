@@ -7,7 +7,7 @@ import {tabTitle, experienceTab, tabContainer, blocTabs, contentTabs, activeTab,
 
 
 const Jobs = () => {
-    const [currentTab, setCurrentTab] = useState(1);
+    const [currentTab, setCurrentTab] = useState(0);
 
     function handleClick(num){
         return () => {
