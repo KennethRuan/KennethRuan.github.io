@@ -1,13 +1,15 @@
 import { graphql, Link } from 'gatsby';
 import React from 'react'
 import '../../styles/global.css'
-import { aboutContainer, skillsList, bioText, bioHeadshot, bioWrapper, PSText} from '../../styles/about.module.css'
+import { aboutContainer, skillsList, bioText, bioHeadshot, bioWrapper, PSText, sectionHeader} from '../../styles/about.module.css'
 
 
 const About = () => {
     return ( 
         <div className="section" id="about">
-            <h1>About Me</h1>
+            <div className={sectionHeader}>
+                <h1>About Me</h1>
+            </div>
             <div className={aboutContainer}>
                 <div className={bioWrapper}>
                     

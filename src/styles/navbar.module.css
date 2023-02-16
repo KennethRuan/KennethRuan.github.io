@@ -44,3 +44,8 @@
     font-size: 1vw;
 }
 
+@media (max-width: 715px) {
+    .navbarContainer {
+        display: none;
+    }
+}
