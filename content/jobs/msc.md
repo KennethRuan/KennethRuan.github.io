@@ -8,7 +8,7 @@ url: 'mcpt.ca'
 showInJobs: true
 ---
 
+- Reviewed and scheduled 26 weekly STEM events for 200+ club members 
 - Responsible for leading MSEO, an annual science and engineering olympiad. MSEO 2022 saw participation from 20 middle schools and 716 participants
-- Oversaw and scheduled 26 STEM-based events for 200+ members
 - Organized and led monthly meetings for the club
 - Led directives relating to merchandise marketing and sales

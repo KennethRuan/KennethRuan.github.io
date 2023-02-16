@@ -8,7 +8,7 @@ url: ''
 showInJobs: true
 ---
 
-- Worked with over 30 students
-- Tutored up to 4 K-12 students simultaneously 
+- Adapted teaching style for over 30 students in K-12 based on student profiles
+- Engaged in a fast-paced environment working with up to 4 students of different grades, simultaneously
 - Conducted private tutoring sessions for grade 12 curriculum
 - Managed social media presence using Hootsuite
