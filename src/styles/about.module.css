@@ -2,6 +2,11 @@
     text-align: left;
 }
 
+.sectionHeader h1{
+    font-size: 3em;
+    font-weight: 400;
+}
+
 .aboutContainer{
     transform: none;
     display: flex;

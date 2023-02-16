@@ -45,7 +45,7 @@
     padding: 15px 15px;
     text-align: center;
     /* width: calc(100%-30px); */
-    min-width: 100px;
+    min-width: 60px;
     height: 30px;
     background: var(--debonair-blue);
     color: var(--cream);
